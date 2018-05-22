@@ -28,7 +28,6 @@ class EventsController < ApplicationController
     redirect_to register_to_events_path(@event),notice: 'Usuario agregado con exito'
   end  
 
- 
   # GET /events/1/edit
   def edit
   end
@@ -54,7 +53,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to @event, notice: 'Event was successfully updated' }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
