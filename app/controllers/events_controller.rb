@@ -18,16 +18,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
   end
-  def register_user
-    @event= Event.find(params[:id])
-    if user.nil?||@event.users.include(@user)
-      redirect_to register_to_event_path(@event),notice: 'Imposible agregar usuario a evento'
-      return
-    end
-    @event.users << @user
-    redirect_to register_to_events_path(@event),notice: 'Usuario agregado con exito'
-  end  
-
+  
   # GET /events/1/edit
   def edit
   end
@@ -39,7 +30,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to @event, notice: 'Event was successfully created.', class: "success" }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -53,7 +44,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated' }
+        format.html { redirect_to @event, notice: 'Event was successfully updated', class: "success" }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -75,6 +66,17 @@ class EventsController < ApplicationController
   def register
     @users_of_event = @event.users
   end
+
+  def register_user
+    @event= Event.find(params[:id])
+    if user.nil?||@event.users.include?(@user)
+      redirect_to register_to_event_path(@event),notice: 'Imposible agregar usuario a evento'
+      return
+    end
+    @event.users << @user
+    redirect_to register_to_events_path(@event),notice: 'Usuario agregado con exito'
+  end  
+
   
 
   private
