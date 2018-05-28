@@ -15,6 +15,9 @@
         <%= value %> 
       </div>
     <% end %>
+
+  <%= link_to 'Cerrar sesion', destroy_user_session_path, method: :delete if user_sing_in? %>
+
     <%= yield %>
   </body>
 </html>

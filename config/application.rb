@@ -15,5 +15,17 @@ module Meeho
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.i18n.default_locale = :'es-MX'
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_senttings = {
+      adress:            'smtp.gmail.com',
+      port:               587,
+      domain:             'gmail.com',
+      user_name:          'meeho.skyline',
+      password:           'gusanonoloveas',
+      authentication:     'plain',
+      enable_starttls_auto: true
+    }
   end
 end
