@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+Esta es la version chida del proyecto 
+Faltan cosas asi que es un recordatorio 
